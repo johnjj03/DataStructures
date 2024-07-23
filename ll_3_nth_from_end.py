@@ -16,5 +16,6 @@ def nth_from_end(head, n):
         right = right.next
         left = left.next 
     left.next = left.next.next
+    
     return dummy.next
         

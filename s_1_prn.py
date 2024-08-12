@@ -5,15 +5,15 @@ def evalRPN(tokens) -> int:
           if i not in ops:
             stack.append(int(i))
           elif len(stack) > 1:
+            a = stack.pop()
+            b = stack.pop()
             if i == "+":
-              stack.append(stack.pop()+stack.pop())
+              stack.append(a+b)
             elif i == "-":
-              stack.append(-(stack.pop()-stack.pop()))
+              stack.append(b-a)
             elif i == "*":
-              stack.append(stack.pop()*stack.pop())
+              stack.append(a*b)
             else:
-              a = stack.pop()
-              b = stack.pop()
               stack.append(int(b/a))
       return stack[0]
 

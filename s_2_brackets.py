@@ -1,16 +1,14 @@
 def isValid(s) -> bool:
     check=[]
-    for i in s:
-        if(i in ['(','[','{']):
-            check.append(i)
-        elif(i in [')',']','}'] and len(check) == 0):
-            return False
-        if(i == ')'  and check.pop() != '('):
-            return False
-        elif(i == ']' and check.pop() != '['):
-            return False
-        elif(i == '}' and check.pop() != '{'):
-            return False
+    # opening_brackets  = ['(','[','{']
+    # closing_brackets = [')',']','}']
+    brackets = {'(':')','{':'}','[':']'}
+    for char in s:
+        if(char in brackets):
+            check.append(char)
+        elif(char in brackets.values()):
+            if(len(check) == 0 or check.pop() != brackets[char]):
+                return False
         if(len(check) == 0):
             return True
     else:
